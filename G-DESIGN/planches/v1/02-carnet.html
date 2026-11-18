@@ -1,0 +1,297 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Réseau électrique · V1 · 02 Carnet</title>
+<style>
+/* ============ SHEET (planche) ============ */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#cfd1d6}
+body{font-family:system-ui,"Ubuntu Sans","Segoe UI","Helvetica Neue",Arial,sans-serif;color:#15181f;overflow-x:auto}
+.mono,.k,.fr-l{font-family:ui-monospace,"JetBrains Mono","DejaVu Sans Mono",Menlo,Consolas,monospace}
+.sheet{width:1980px;padding:40px 48px 56px}
+.sh-head{display:grid;grid-template-columns:400px 1fr 520px;gap:40px;align-items:start;margin-bottom:32px}
+.k,.fr-l{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5c626e}
+.sh-id h1{font-size:44px;line-height:1.05;font-weight:700;letter-spacing:-.03em;margin-top:10px}
+.sh-why{font-size:15px;line-height:1.55;max-width:720px;color:#262a33}
+.sh-why p+p{margin-top:8px}
+.sw{display:flex;gap:8px}
+.sw span{flex:1;height:58px;border-radius:4px;padding:6px;font:10px/1.3 ui-monospace,"DejaVu Sans Mono",monospace;display:flex;align-items:flex-end;border:1px solid rgba(0,0,0,.08)}
+.ty{font-size:12px;color:#414652;line-height:1.5;margin-top:10px}
+.frames{display:flex;gap:48px;align-items:flex-start}
+.fr-l{margin-bottom:10px}
+.states{margin-top:44px}
+.st-row{display:flex;gap:28px;margin-top:12px}
+.st{width:186px}
+.st-box{width:186px;height:330px;border-radius:12px;overflow:hidden;box-shadow:0 14px 30px -18px rgba(0,0,0,.5);position:relative}
+.st-box>.g{position:absolute;left:0;top:0;width:362px;height:642px;transform:scale(.5138);transform-origin:0 0}
+.st>b{display:block;font-size:13px;margin-top:10px}
+.st>i{display:block;font:normal 11px/1.4 ui-monospace,"DejaVu Sans Mono",monospace;color:#5c626e;margin-top:3px}
+.foot{margin-top:36px;max-width:1200px;font:12px/1.6 ui-monospace,"DejaVu Sans Mono",monospace;color:#5c626e}
+
+/* ============ NEUTRAL HOST CHROME (generic feed, not branded) ============ */
+.desk{width:1440px;height:900px;background:#f5f6f7;border-radius:10px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.35)}
+.d-top{height:56px;background:#fff;border-bottom:1px solid #e4e6e8;display:flex;align-items:center;gap:24px;padding:0 24px}
+.d-logo{width:96px;height:22px;border-radius:6px;background:#dfe2e5}
+.d-search{flex:0 0 560px;margin:0 auto;height:38px;border-radius:19px;background:#eef0f2;color:#8a9096;font-size:14px;display:flex;align-items:center;padding:0 18px}
+.d-user{width:34px;height:34px;border-radius:50%;background:#dfe2e5}
+.d-body{display:grid;grid-template-columns:240px 768px 330px;gap:28px;padding:16px 24px 0;justify-content:center}
+.d-nav{display:flex;flex-direction:column;gap:14px;padding-top:8px}
+.d-nav span{height:12px;border-radius:6px;background:#e3e6e9}
+.d-nav span:nth-child(3n){width:70%}.d-nav span:nth-child(4n){width:55%}
+.post{background:#fff;border:1px solid #e4e6e8;border-radius:12px;padding:10px 16px 4px}
+.post-h{display:flex;align-items:center;gap:8px;font-size:12px;color:#6b7176;height:26px}
+.av{width:22px;height:22px;border-radius:50%;background:#1b2233;position:relative;flex:none}
+.av:after{content:"";position:absolute;left:8px;top:6px;width:6px;height:6px;border-radius:50%;background:#ffc46b;box-shadow:0 0 6px #ffc46b}
+.post-h b{color:#1f2326;font-weight:600}
+.post-t{font-size:18px;font-weight:600;color:#1f2326;margin:2px 0 8px;letter-spacing:-.01em}
+.post-body{border-radius:10px;overflow:hidden;height:640px;position:relative}
+.post-f{display:flex;gap:10px;height:40px;align-items:center;font-size:12px;font-weight:600;color:#53595e}
+.post-f span{background:#eef0f2;border-radius:16px;padding:7px 12px}
+.card{background:#fff;border:1px solid #e4e6e8;border-radius:12px;padding:16px;font-size:13px;color:#3b4146;line-height:1.5}
+.card h4{font-size:14px;color:#1f2326;margin-bottom:6px}
+.card+.card{margin-top:16px}
+.cm{border-top:1px solid #eef0f2;padding:10px 0}
+.cm b{font-size:12px;color:#6b7176;font-weight:600;display:block;margin-bottom:2px}
+.mob{width:390px;height:844px;background:#fff;border-radius:44px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.4);outline:10px solid #111;display:flex;flex-direction:column}
+.m-status{height:44px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:0 28px;font-size:14px;font-weight:600}
+.m-bar{height:42px;flex:none;display:flex;align-items:center;gap:12px;padding:0 14px;border-bottom:1px solid #eceef0;font-size:14px;font-weight:600}
+.m-post{padding:8px 14px;flex:none}
+.m-post .post-t{font-size:15px;margin:0}
+.m-body{flex:1;margin:0 14px;border-radius:10px;overflow:hidden;position:relative}
+.m-f{height:52px;flex:none;display:flex;gap:10px;align-items:center;padding:0 14px;font-size:12px;font-weight:600;color:#53595e}
+.m-f span{background:#eef0f2;border-radius:16px;padding:7px 12px}
+
+/* ============ GAME · direction Carnet ============ */
+.av{background:#f2eee3;border:1.5px solid #18171c}.av:after{left:6.5px;top:6.5px;box-shadow:none;background:#ff9a1f}
+.g{--paper:#f2eee3;--ink:#18171c;--mute:#6d685e;--rule:rgba(24,23,28,.16);--lamp:#ff9a1f;
+  position:absolute;inset:0;color:var(--ink);display:flex;flex-direction:column;padding:16px 18px;gap:11px;
+  background:var(--paper) url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/%3E%3CfeColorMatrix values='0 0 0 0 .1 0 0 0 0 .09 0 0 0 0 .08 0 0 0 .09 0'/%3E%3C/filter%3E%3Crect width='160' height='160' filter='url(%23n)'/%3E%3C/svg%3E");
+  font-family:system-ui,"Ubuntu Sans","Segoe UI","Helvetica Neue",Arial,sans-serif}
+.g-top{display:flex;justify-content:space-between;align-items:flex-start}
+.g-name{display:block;font:900 27px/0.95 "Arial Black","Ubuntu","Helvetica Neue",Arial,sans-serif;letter-spacing:-.035em;text-transform:uppercase;filter:url(#wob)}
+.g-day{display:block;font-size:10.5px;letter-spacing:.12em;color:var(--mute);margin-top:6px}
+.g-streak{font:800 11px/1 system-ui,"Ubuntu Sans",Arial,sans-serif;letter-spacing:.04em;background:#fff;border:2px solid var(--ink);border-radius:999px;padding:7px 11px 7px 24px;transform:rotate(3deg);box-shadow:2px 3px 0 var(--ink);position:relative;white-space:nowrap}
+.g-streak:before{content:"";position:absolute;left:9px;top:8px;width:9px;height:9px;border-radius:50%;background:var(--lamp);border:1.5px solid var(--ink)}
+.g-read{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.g-read span{font-size:9.5px;font-weight:700;letter-spacing:.14em;color:var(--mute);border:2px solid var(--ink);border-radius:10px;padding:6px 9px 7px;background:#fffdf7}
+.g-read b{display:block;font-size:21px;font-weight:700;letter-spacing:-.03em;color:var(--ink);margin-top:2px}
+.g-read b small{font-size:11px;color:var(--mute);margin-left:3px;letter-spacing:0}
+.g-read em{font-style:normal}.g-read .neg{background:var(--ink);color:#fff;border-radius:4px;padding:0 4px}
+.g-chart{flex:1;min-height:0;position:relative}
+.g-chart svg,.g-village svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.g-village{height:96px;flex:none;position:relative;margin-top:-6px}
+.g-rule{font-size:13.5px;color:var(--ink);text-align:center}
+.g-rule b{font-weight:800;background:linear-gradient(transparent 58%,rgba(255,154,31,.55) 58%)}
+.g-ctl{display:grid;grid-template-columns:1fr 1.3fr;gap:14px;align-items:stretch;padding-bottom:4px}
+.g-bat{border:2px solid var(--ink);border-radius:12px;padding:8px 11px;background:#fffdf7;display:flex;flex-direction:column;justify-content:space-between;position:relative}
+.g-bat:after{content:"";position:absolute;right:-7px;top:50%;width:5px;height:16px;margin-top:-8px;border:2px solid var(--ink);border-left:0;border-radius:0 4px 4px 0;background:#fffdf7}
+.g-bat .lbl{display:flex;justify-content:space-between;font-size:9.5px;font-weight:700;letter-spacing:.14em;color:var(--mute)}
+.g-bat .lbl b{color:var(--ink);letter-spacing:0;font-size:12px}
+.cells{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;margin-top:7px}
+.cells i{height:14px;border:1.5px solid var(--ink);border-radius:2px}
+.cells i.on{background:repeating-linear-gradient(-45deg,var(--ink) 0 1.5px,transparent 1.5px 4px)}
+.g-btn{border:2.5px solid var(--ink);background:var(--ink);color:#fff;border-radius:999px;font:800 16px/1 system-ui,"Ubuntu Sans",Arial,sans-serif;letter-spacing:-.01em;padding:0 10px;min-height:56px;cursor:pointer;box-shadow:0 5px 0 #000}
+.g-btn small{display:block;font:700 9.5px/1 ui-monospace,"DejaVu Sans Mono",monospace;letter-spacing:.12em;margin-top:6px;opacity:.7}
+.g-btn.on{background:var(--lamp);color:var(--ink);box-shadow:0 1px 0 var(--ink);transform:translateY(4px)}
+.g-btn.solid{background:#fff;color:var(--ink)}
+.g-done{position:absolute;left:18px;right:18px;bottom:16px;border:2px solid var(--ink);border-radius:12px;padding:12px 14px;background:#fff;box-shadow:3px 4px 0 var(--ink);font-size:13px;transform:rotate(-1deg)}
+.desk .g{padding:20px 26px}
+.desk .g-name{font-size:32px}
+.desk .g-read b{font-size:27px}
+.desk .g-village{height:112px}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <svg width="0" height="0" style="position:absolute"><filter id="wob"><feTurbulence type="fractalNoise" baseFrequency=".045" numOctaves="2" seed="4"/><feDisplacementMap in="SourceGraphic" scale="2.6"/></filter></svg>
+  <div class="sh-head">
+    <div class="sh-id">
+      <div class="k">Réseau électrique · V1 · direction 02 / 03 · page Jeu</div>
+      <h1>Carnet</h1>
+      <div class="k" style="margin-top:14px">Refs : Don't Look Up · Gapsy · Gemeos</div>
+    </div>
+    <div class="sh-why">
+      <p><b>Le relevé du soir tenu à la main, sur le carnet du gardien de la centrale.</b> Encre noire sur papier, traits qui tremblent un peu, et une seule couleur : l'orange des lampadaires allumés et du stock qu'on libère.</p>
+      <p>Là où le stock manque, la courbe se remplit d'encre noire : on voit littéralement le noir tomber sur la rue. Une flèche griffonnée annonce la pointe à l'avance, comme une note dans la marge.</p>
+      <p>Je m'écarte du brief exprès : parmi 30 jeux du même concours, la plupart seront sombres, et ce papier clair se reconnaît dans le feed en une seconde.</p>
+    </div>
+    <div class="sh-spec">
+      <div class="sw">
+        <span style="background:#f2eee3">#F2EEE3<br>papier</span>
+        <span style="background:#fffdf7">#FFFDF7<br>fiche</span>
+        <span style="background:#18171c;color:#f2eee3">#18171C<br>encre</span>
+        <span style="background:#6d685e;color:#f2eee3">#6D685E<br>crayon</span>
+        <span style="background:#ff9a1f">#FF9A1F<br>lampe · accent</span>
+      </div>
+      <div class="ty">Titre : grotesque noire très grasse, capitales, léger tremblé (filtre SVG). Texte : linéale système ; chiffres gras. Échelle 10 / 13.5 / 21 / 32. Composants : contour d'encre 2 px, ombre décalée pleine (le bouton s'enfonce quand on le tient). Mouvement : le trait de la courbe se dessine au fil des quarts d'heure ; les lampadaires s'allument avec un petit rebond.</div>
+    </div>
+  </div>
+  <div class="frames">
+    <div>
+      <div class="fr-l">Desktop · 1440 × 900 · post ouvert dans le feed</div>
+      <div class="desk">
+        <div class="d-top"><div class="d-logo"></div><div class="d-search">Search</div><div class="d-user"></div></div>
+        <div class="d-body">
+          <div class="d-nav"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div>
+            <div class="post">
+              <div class="post-h"><div class="av"></div><b>r/villagegrid</b> · posted by u/reseau-bot · 3h</div>
+              <div class="post-t">Evening 23 — the village needs you before 21:00</div>
+              <div class="post-body" data-game='{"now":10,"press":true}'></div>
+              <div class="post-f"><span>▲ 412 ▼</span><span>128 comments</span><span>Share</span></div>
+            </div>
+          </div>
+          <div class="d-side">
+            <div class="card"><h4>Tonight on the grid</h4>Same evening for everyone. Keep the street lit from 18:00 to midnight.</div>
+            <div class="card"><h4>Comments</h4>
+              <div class="cm"><b>u/lampwick · 94% lit</b>Held it all through the 21:00 peak, ran dry at 22:15.</div>
+              <div class="cm"><b>u/ohm_sweet_ohm · 88% lit</b>Released too early. The dinner bump fooled me.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="fr-l">Mobile · 390 × 844 · même état</div>
+      <div class="mob">
+        <div class="m-status"><span>21:04</span><span>●●● ▮</span></div>
+        <div class="m-bar"><span>‹</span><span>r/villagegrid</span></div>
+        <div class="m-post"><div class="post-h"><div class="av"></div><b>u/reseau-bot</b> · 3h</div><div class="post-t">Evening 23 — the village needs you before 21:00</div></div>
+        <div class="m-body" data-game='{"now":10,"press":true}'></div>
+        <div class="m-f"><span>▲ 412 ▼</span><span>128</span><span>Share</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="states">
+    <div class="fr-l">États du jeu (mobile, réduit)</div>
+    <div class="st-row">
+      <div class="st"><div class="st-box" data-game='{"now":-1}'></div><b>Prêt</b><i>avant 18:00 · prévision en pointillé · « Light the evening »</i></div>
+      <div class="st"><div class="st-box" data-game='{"now":4}'></div><b>Surplus</b><i>19:00 · relâché · le stock se hachure</i></div>
+      <div class="st"><div class="st-box" data-game='{"now":10,"press":true}'></div><b>Pointe, on libère</b><i>20:30 · bouton enfoncé · orange = stock libéré</i></div>
+      <div class="st"><div class="st-box" data-game='{"now":12,"press":true}'></div><b>Stock à sec</b><i>21:00 · 7/12 · le manque s'encre en noir</i></div>
+      <div class="st"><div class="st-box" data-game='{"now":24,"done":true}'></div><b>Déjà joué</b><i>la page du soir est remplie · « back tomorrow »</i></div>
+    </div>
+  </div>
+  <div class="foot">Mêmes données de démo que la direction 01. Aucune police téléchargée : le tremblé du titre et des traits est un filtre SVG (feTurbulence + feDisplacementMap), reproductible tel quel dans l'app. Règle et contrôle proposés, à valider : voir G-DESIGN/PAGES.md, questions 1 à 5.</div>
+</div>
+
+<template id="tpl">
+  <div class="g">
+    <div class="g-top"><div><b class="g-name">Réseau<br>électrique</b><span class="g-day mono">EVENING 23 · WED NOV 18</span></div><span class="g-streak">6 nights in a row</span></div>
+    <div class="g-read mono"><span>SUPPLY<b data-r="sup"></b></span><span>DEMAND<b data-r="dem"></b></span><span>GAP<b data-r="gap"></b></span></div>
+    <div class="g-chart" data-r="chart"></div>
+    <div class="g-village" data-r="vil"></div>
+    <p class="g-rule" data-r="rule"><b>Hold</b> to send stored power. <b>Let go</b> to save it.</p>
+    <div class="g-ctl"><div class="g-bat mono"><div class="lbl">STORED<b data-r="sto"></b></div><div class="cells" data-r="cells"></div></div><button class="g-btn" data-r="btn"></button></div>
+  </div>
+</template>
+<script>
+/* ---- shared demo model (identical in the 3 boards) ---- */
+const N = 25, CAP = 100;
+const hour = i => i * 0.25;
+const demandAt = t => 26 + 44 * Math.exp(-((t - 2.75) ** 2) / 1.4) + 8 * Math.exp(-((t - 1) ** 2) / 0.3);
+const supplyAt = t => 40 + 26 * Math.max(0, 1 - t / 1.6);
+const simulate = () => {
+  let store = 6; const out = [];
+  for (let i = 0; i < N; i++) {
+    const t = hour(i), d = demandAt(t), s = supplyAt(t);
+    let rel = 0;
+    if (s >= d) store = Math.min(CAP, store + (s - d) * 0.25 * 0.6);
+    else { rel = Math.min(d - s, store / 0.25); store -= rel * 0.25; }
+    const lit = Math.round(12 * Math.min(1, (s + rel) / d));
+    out.push({ t, d, s, rel, store, lit });
+  }
+  return out;
+};
+const SIM = simulate();
+const clock = i => { const m = 18 * 60 + i * 15; return String(Math.floor(m / 60) % 24).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0"); };
+const NS = "http://www.w3.org/2000/svg";
+const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+const svgIn = box => { const w = box.clientWidth, h = box.clientHeight; const s = el("svg", { viewBox: `0 0 ${w} ${h}` }); box.appendChild(s); return { s, w, h }; };
+
+/* ---- chart: pencil curve, ink where it went dark ---- */
+const MONO = "ui-monospace,DejaVu Sans Mono,monospace", INK = "#18171c";
+const drawChart = (box, now) => {
+  const { s, w, h } = svgIn(box);
+  const L = 4, R = w - 4, T = 26, B = h - 20, x = i => L + (R - L) * i / (N - 1), y = v => B - (B - T) * v / 80;
+  const d = el("defs", {}, s), pat = el("pattern", { id: "hatch", width: 5, height: 5, patternUnits: "userSpaceOnUse", patternTransform: "rotate(45)" }, d);
+  el("line", { x1: 0, y1: 0, x2: 0, y2: 5, stroke: "#ff9a1f", "stroke-width": 3 }, pat);
+  const g = el("g", { filter: "url(#wob)" }, s);
+  [0, 4, 8, 12, 16, 20, 24].forEach(i => { const t = el("text", { x: x(i), y: h - 4, fill: "#6d685e", "font-size": 9.5, "font-weight": 700, "text-anchor": i === 0 ? "start" : i === 24 ? "end" : "middle", "font-family": MONO }, s); t.textContent = clock(i).replace(":00", "h"); });
+  el("line", { x1: L, x2: R, y1: B, y2: B, stroke: INK, "stroke-width": 2 }, g);
+  const upto = Math.max(now, 0), past = SIM.slice(0, upto + 1);
+  const pts = (a, f) => a.map((p, i) => `${x(i)},${y(f(p))}`).join(" "), band = (a, lo, hi) => a.map((p, i) => `${x(i)},${y(lo(p))}`).join(" ") + " " + a.map((p, i) => `${x(i)},${y(hi(p))}`).reverse().join(" ");
+  el("polyline", { points: pts(SIM, p => p.s), fill: "none", stroke: "#6d685e", "stroke-width": 1.6, "stroke-dasharray": "6 4" }, g);
+  if (now >= 0) {
+    el("polygon", { points: band(past, p => p.s, p => p.s + p.rel), fill: "url(#hatch)" }, g);
+    el("polygon", { points: band(past, p => p.s + p.rel, p => Math.max(p.d, p.s + p.rel)), fill: INK }, g);
+    el("polyline", { points: pts(past, p => p.d), fill: "none", stroke: INK, "stroke-width": 2.6, "stroke-linejoin": "round" }, g);
+  }
+  el("polyline", { points: SIM.slice(upto).map((p, k) => `${x(upto + k)},${y(p.d)}`).join(" "), fill: "none", stroke: INK, "stroke-width": 1.6, "stroke-dasharray": "1 5", "stroke-linecap": "round" }, g);
+  const sl = el("text", { x: R, y: y(SIM[24].s) - 6, fill: "#6d685e", "font-size": 9.5, "font-weight": 700, "text-anchor": "end", "font-family": MONO }, s); sl.textContent = "SUPPLY";
+  if (now < 13) {
+    const px = x(11), py = y(SIM[11].d), ax = px + (now > 6 ? 46 : 30);
+    el("path", { d: `M${ax + 6},${py - 4} C${ax + 4},${py - 26} ${px + 18},${py - 26} ${px + 6},${py - 8} M${px + 6},${py - 8} l1,-8 M${px + 6},${py - 8} l8,-2`, fill: "none", stroke: INK, "stroke-width": 2, "stroke-linecap": "round" }, g);
+    const n = el("text", { x: ax + 10, y: py + 2, fill: INK, "font-size": 12, "font-weight": 800, "font-family": "system-ui,Ubuntu Sans,Arial,sans-serif" }, s); n.textContent = "peak ≈ 20:45";
+  }
+  if (now < 0) return;
+  el("line", { x1: x(now), x2: x(now), y1: T - 2, y2: B, stroke: INK, "stroke-width": 2 }, g);
+  el("circle", { cx: x(now), cy: y(SIM[now].d), r: 5, fill: "#ff9a1f", stroke: INK, "stroke-width": 2 }, s);
+  const tw = 70, tx = Math.min(Math.max(x(now) - tw / 2, 0), w - tw);
+  el("rect", { x: tx, y: 0, width: tw, height: 20, rx: 10, fill: INK }, s);
+  const lab = el("text", { x: tx + tw / 2, y: 14, fill: "#fff", "font-size": 10.5, "font-weight": 700, "text-anchor": "middle", "font-family": MONO }, s); lab.textContent = "NOW " + clock(now);
+};
+
+/* ---- village: ink houses, lamps that bloom orange ---- */
+const drawVillage = (box, lit, now) => {
+  const { s, w, h } = svgIn(box);
+  const base = h - 6, g = el("g", { filter: "url(#wob)" }, s);
+  const houses = [[.0, 34, 40], [.13, 46, 46], [.29, 30, 38], [.42, 54, 50], [.6, 38, 42], [.74, 48, 44], [.88, 32, 40]];
+  houses.forEach(([fx, hh, bw0], k) => {
+    const bw = bw0 * Math.min(1, w / 560);
+    const bx = fx * w + 2;
+    el("path", { d: `M${bx},${base} V${base - hh} L${bx + bw / 2},${base - hh - 16} L${bx + bw},${base - hh} V${base} Z`, fill: "#fffdf7", stroke: INK, "stroke-width": 2, "stroke-linejoin": "round" }, g);
+    const on = now >= 0 && (k * 5 + now) % 4 !== 0;
+    el("rect", { x: bx + bw / 2 - 6, y: base - hh + 10, width: 12, height: 11, fill: on ? "#ff9a1f" : "#fffdf7", stroke: INK, "stroke-width": 1.8 }, g);
+  });
+  for (let k = 0; k < 12; k++) {
+    const lx = (k + .5) * w / 12, on = now >= 0 && k < lit, top = base - 58;
+    if (on) el("circle", { cx: lx + 5, cy: top + 6, r: 13, fill: "#ff9a1f", opacity: .28 }, s);
+    el("path", { d: `M${lx},${base} V${top} q0,-6 6,-6 h2`, fill: "none", stroke: INK, "stroke-width": 2, "stroke-linecap": "round" }, g);
+    el("path", { d: `M${lx + 3},${top - 5} h9 l-2,7 h-5 z`, fill: on ? "#ff9a1f" : "#fffdf7", stroke: INK, "stroke-width": 1.8, "stroke-linejoin": "round" }, g);
+  }
+  el("line", { x1: 0, x2: w, y1: base, y2: base, stroke: INK, "stroke-width": 2.4 }, g);
+  if (now >= 0 && lit < 12) {
+    const bx = (lit + .5) * w / 12 + 8;
+    el("path", { d: `M${bx},${base - 70} h44 a6,6 0 0 1 6,6 v12 a6,6 0 0 1 -6,6 h-34 l-8,7 v-7 a6,6 0 0 1 -4,-6 v-12 a6,6 0 0 1 6,-6 z`, fill: "#fff", stroke: INK, "stroke-width": 1.8 }, g);
+    const t = el("text", { x: bx + 24, y: base - 57, fill: INK, "font-size": 11, "font-weight": 800, "text-anchor": "middle", "font-family": "system-ui,Arial,sans-serif" }, s); t.textContent = "hey!";
+  }
+};
+/* ---- mount ---- */
+const fmt = v => Math.round(v);
+const mount = (host, o) => {
+  host.appendChild(document.getElementById("tpl").content.cloneNode(true));
+  const r = k => host.querySelector(`[data-r=${k}]`), now = o.now, p = now >= 0 ? SIM[now] : SIM[0];
+  const sup = p.s + (o.press ? p.rel : 0), gap = sup - p.d;
+  r("sup").innerHTML = now < 0 ? "—" : `${fmt(sup)}<small>kW</small>`;
+  r("dem").innerHTML = now < 0 ? "—" : `${fmt(p.d)}<small>kW</small>`;
+  r("gap").innerHTML = now < 0 ? "—" : `<em class="${gap < -0.5 ? "neg" : ""}">${gap >= 0 ? "+" : "−"}${Math.abs(fmt(gap))}</em><small>kW</small>`;
+  const sto = now < 0 ? 6 : p.store;
+  r("sto").textContent = `${fmt(sto)} kWh`;
+  r("cells").innerHTML = Array.from({ length: 10 }, (_, k) => `<i class="${k < Math.round(sto / 10) ? "on" : ""}"></i>`).join("");
+  const btn = r("btn");
+  if (now < 0) { btn.className = "g-btn solid"; btn.innerHTML = "Light the evening<small>18:00 → 00:00</small>"; }
+  else { btn.className = "g-btn" + (o.press ? " on" : ""); btn.innerHTML = (o.press ? "Releasing" : "Hold to release") + `<small>${o.press ? "STORE → STREET" : "SURPLUS → STORE"}</small>`; }
+  requestAnimationFrame(() => { drawChart(r("chart"), now); drawVillage(r("vil"), p.lit, now); });
+  if (o.done) {
+    r("rule").remove(); host.querySelector(".g-ctl").remove();
+    host.querySelector(".g").insertAdjacentHTML("beforeend", `<div class="g-done"><b>Tonight: 95% of the street stayed lit.</b><br>Next evening at 18:00, same grid for everyone.</div>`);
+  }
+};
+document.querySelectorAll("[data-game]").forEach(h => mount(h, JSON.parse(h.dataset.game)));
+</script>
+</body>
+</html>

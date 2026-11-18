@@ -15,3 +15,7 @@ Idees validees par H le 2026-11-17 (30/30) : passage en phase build.
 (dossier cree automatiquement, aucune tache encore lancee)
 
 ## Claude
+
+- Phase : design · Round : V1 · Maj : 2026-11-18
+- V1 livrée sur la branche `design/v1-planches` : `G-DESIGN/PAGES.md`, `REFS.md` (refs catégorie `narratif-jeu`), 3 planches de la page Jeu (`01-veillee`, `02-carnet`, `03-maquette`), journal `DESIGN.md`.
+- Recommandation : 02 Carnet. En attente : validation de Gaia (direction + 7 questions produit de `PAGES.md`).
