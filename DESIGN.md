@@ -23,3 +23,9 @@ Journal design (Claude). Versions datées, jamais écrasées. Livrables dans `G-
 **Changelog V1** : création de `PAGES.md`, `REFS.md`, `planches/v1/01-veillee.html`, `02-carnet.html`, `03-maquette.html`. Chaque planche : cadre desktop 1440 × 900 + cadre mobile 390 × 844 côte à côte, 5 états du jeu en vignettes (prêt, surplus, pointe, stock à sec, déjà joué). Fichiers autonomes, s'ouvrent en double-clic.
 
 **Attendu de Gaia** : Garder / Changer (deltas numérotés) / Essayer, + choix d'une direction et réponses aux questions de `PAGES.md`. Ensuite : `STYLE.md` puis les planches Post, Carte de fin, Séries & classement.
+
+## V1 · validation — 2026-11-18
+
+**Gaia retient la direction 03 « Maquette »** (et non la recommandation 02). Style formalisé dans `G-DESIGN/STYLE.md`.
+
+**Changelog** : ajout de `G-DESIGN/STYLE.md` ; page Jeu passée « validée » dans `PAGES.md`. Prochaine étape : planches Post, Carte de fin, Séries & classement dans ce style (non commencées).

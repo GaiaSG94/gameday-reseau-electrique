@@ -6,7 +6,7 @@
 | # | Page | Rôle | Contenu clé | Statut |
 |---|------|------|-------------|--------|
 | 1 | **Post** | Vue dans le feed (splash inline) : donner envie d'allumer le village du soir | En-tête du post, nom du jeu, n° et date de la soirée du jour, série du joueur, bouton d'entrée | à dessiner |
-| 2 | **Jeu** | Écran principal, une seule règle : « Hold to send stored power. Let go to save it. » | Courbe de charge du soir (18:00 → 00:00), production vs consommation, curseur « maintenant », jauge de stockage, 12 lampadaires (allumés = demande couverte), un seul contrôle | **en revue (3 directions V1)** |
+| 2 | **Jeu** | Écran principal, une seule règle : « Hold to send stored power. Let go to save it. » | Courbe de charge du soir (18:00 → 00:00), production vs consommation, curseur « maintenant », jauge de stockage, 12 lampadaires (allumés = demande couverte), un seul contrôle | **validée (V1 · 03 Maquette)** |
 | 3 | **Carte de fin** | Résultat + boucle quotidienne + accroche commentaire | Part de la soirée éclairée, coupures, série, invitation à commenter en un geste, prochaine soirée demain | à dessiner |
 | 4 | **Séries & classement** | Montrer la série et la communauté | Série perso, scores de la communauté sur la même seed | à dessiner |
 
