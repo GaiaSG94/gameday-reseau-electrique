@@ -1,0 +1,284 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Réseau électrique · V1 · 01 Veillée</title>
+<style>
+/* ============ SHEET (planche) ============ */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#cfd1d6}
+body{font-family:system-ui,"Ubuntu Sans","Segoe UI","Helvetica Neue",Arial,sans-serif;color:#15181f;overflow-x:auto}
+.mono,.k,.fr-l{font-family:ui-monospace,"JetBrains Mono","DejaVu Sans Mono",Menlo,Consolas,monospace}
+.sheet{width:1980px;padding:40px 48px 56px}
+.sh-head{display:grid;grid-template-columns:400px 1fr 520px;gap:40px;align-items:start;margin-bottom:32px}
+.k,.fr-l{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5c626e}
+.sh-id h1{font-size:44px;line-height:1.05;font-weight:700;letter-spacing:-.03em;margin-top:10px}
+.sh-why{font-size:15px;line-height:1.55;max-width:720px;color:#262a33}
+.sh-why p+p{margin-top:8px}
+.sw{display:flex;gap:8px}
+.sw span{flex:1;height:58px;border-radius:4px;padding:6px;font:10px/1.3 ui-monospace,"DejaVu Sans Mono",monospace;display:flex;align-items:flex-end;border:1px solid rgba(0,0,0,.08)}
+.ty{font-size:12px;color:#414652;line-height:1.5;margin-top:10px}
+.frames{display:flex;gap:48px;align-items:flex-start}
+.fr-l{margin-bottom:10px}
+.states{margin-top:44px}
+.st-row{display:flex;gap:28px;margin-top:12px}
+.st{width:186px}
+.st-box{width:186px;height:330px;border-radius:12px;overflow:hidden;box-shadow:0 14px 30px -18px rgba(0,0,0,.5);position:relative}
+.st-box>.g{position:absolute;left:0;top:0;width:362px;height:642px;transform:scale(.5138);transform-origin:0 0}
+.st>b{display:block;font-size:13px;margin-top:10px}
+.st>i{display:block;font:normal 11px/1.4 ui-monospace,"DejaVu Sans Mono",monospace;color:#5c626e;margin-top:3px}
+.foot{margin-top:36px;max-width:1200px;font:12px/1.6 ui-monospace,"DejaVu Sans Mono",monospace;color:#5c626e}
+
+/* ============ NEUTRAL HOST CHROME (generic feed, not branded) ============ */
+.desk{width:1440px;height:900px;background:#f5f6f7;border-radius:10px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.35)}
+.d-top{height:56px;background:#fff;border-bottom:1px solid #e4e6e8;display:flex;align-items:center;gap:24px;padding:0 24px}
+.d-logo{width:96px;height:22px;border-radius:6px;background:#dfe2e5}
+.d-search{flex:0 0 560px;margin:0 auto;height:38px;border-radius:19px;background:#eef0f2;color:#8a9096;font-size:14px;display:flex;align-items:center;padding:0 18px}
+.d-user{width:34px;height:34px;border-radius:50%;background:#dfe2e5}
+.d-body{display:grid;grid-template-columns:240px 768px 330px;gap:28px;padding:16px 24px 0;justify-content:center}
+.d-nav{display:flex;flex-direction:column;gap:14px;padding-top:8px}
+.d-nav span{height:12px;border-radius:6px;background:#e3e6e9}
+.d-nav span:nth-child(3n){width:70%}.d-nav span:nth-child(4n){width:55%}
+.post{background:#fff;border:1px solid #e4e6e8;border-radius:12px;padding:10px 16px 4px}
+.post-h{display:flex;align-items:center;gap:8px;font-size:12px;color:#6b7176;height:26px}
+.av{width:22px;height:22px;border-radius:50%;background:#1b2233;position:relative;flex:none}
+.av:after{content:"";position:absolute;left:8px;top:6px;width:6px;height:6px;border-radius:50%;background:#ffc46b;box-shadow:0 0 6px #ffc46b}
+.post-h b{color:#1f2326;font-weight:600}
+.post-t{font-size:18px;font-weight:600;color:#1f2326;margin:2px 0 8px;letter-spacing:-.01em}
+.post-body{border-radius:10px;overflow:hidden;height:640px;position:relative}
+.post-f{display:flex;gap:10px;height:40px;align-items:center;font-size:12px;font-weight:600;color:#53595e}
+.post-f span{background:#eef0f2;border-radius:16px;padding:7px 12px}
+.card{background:#fff;border:1px solid #e4e6e8;border-radius:12px;padding:16px;font-size:13px;color:#3b4146;line-height:1.5}
+.card h4{font-size:14px;color:#1f2326;margin-bottom:6px}
+.card+.card{margin-top:16px}
+.cm{border-top:1px solid #eef0f2;padding:10px 0}
+.cm b{font-size:12px;color:#6b7176;font-weight:600;display:block;margin-bottom:2px}
+.mob{width:390px;height:844px;background:#fff;border-radius:44px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.4);outline:10px solid #111;display:flex;flex-direction:column}
+.m-status{height:44px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:0 28px;font-size:14px;font-weight:600}
+.m-bar{height:42px;flex:none;display:flex;align-items:center;gap:12px;padding:0 14px;border-bottom:1px solid #eceef0;font-size:14px;font-weight:600}
+.m-post{padding:8px 14px;flex:none}
+.m-post .post-t{font-size:15px;margin:0}
+.m-body{flex:1;margin:0 14px;border-radius:10px;overflow:hidden;position:relative}
+.m-f{height:52px;flex:none;display:flex;gap:10px;align-items:center;padding:0 14px;font-size:12px;font-weight:600;color:#53595e}
+.m-f span{background:#eef0f2;border-radius:16px;padding:7px 12px}
+
+/* ============ GAME · direction Veillée ============ */
+.g{--night:#1b2233;--deep:#121726;--ink:#e9ecf3;--mute:#8790a6;--line:rgba(233,236,243,.10);--lamp:#ffc46b;--grid:#38bdf8;
+  position:absolute;inset:0;background:radial-gradient(120% 70% at 50% 0%,#26304a 0%,var(--night) 55%,var(--deep) 100%);color:var(--ink);
+  display:flex;flex-direction:column;padding:18px 20px 18px;gap:12px;font-family:system-ui,"Ubuntu Sans","Segoe UI","Helvetica Neue",Arial,sans-serif}
+.g-top{display:flex;justify-content:space-between;align-items:flex-start}
+.g-name{display:block;font-size:20px;font-weight:700;letter-spacing:-.02em}
+.g-day{display:block;font-size:10.5px;letter-spacing:.14em;color:var(--mute);margin-top:4px}
+.g-streak{font:600 11px/1 ui-monospace,"DejaVu Sans Mono",monospace;letter-spacing:.06em;color:var(--lamp);border:1px solid rgba(255,196,107,.35);border-radius:999px;padding:7px 10px;white-space:nowrap}
+.g-read{display:grid;grid-template-columns:repeat(3,1fr);border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.g-read span{font-size:9.5px;letter-spacing:.16em;color:var(--mute);padding:8px 0 9px}
+.g-read span+span{padding-left:12px;border-left:1px solid var(--line)}
+.g-read b{display:block;font-size:22px;font-weight:500;letter-spacing:-.02em;color:var(--ink);margin-top:3px}
+.g-read b small{font-size:11px;color:var(--mute);margin-left:3px;letter-spacing:0}
+.g-read em{font-style:normal}.g-read .neg{color:var(--lamp)}
+.g-chart{flex:1;min-height:0;position:relative}
+.g-chart svg,.g-village svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.g-village{height:78px;flex:none;position:relative}
+.g-rule{font-size:13px;color:var(--mute);text-align:center}
+.g-rule b{color:var(--ink);font-weight:600}
+.g-ctl{display:grid;grid-template-columns:1fr 1.25fr;gap:12px;align-items:stretch}
+.g-bat{border:1px solid var(--line);border-radius:12px;padding:9px 12px;display:flex;flex-direction:column;justify-content:space-between}
+.g-bat .lbl{display:flex;justify-content:space-between;font-size:9.5px;letter-spacing:.16em;color:var(--mute)}
+.g-bat .lbl b{color:var(--ink);font-weight:500;letter-spacing:0;font-size:12px}
+.cells{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;margin-top:8px}
+.cells i{height:14px;border-radius:2px;background:rgba(233,236,243,.08)}
+.cells i.on{background:var(--grid);box-shadow:0 0 8px rgba(56,189,248,.45)}
+.g-btn{border:1.5px solid var(--lamp);background:transparent;color:var(--lamp);border-radius:12px;font:600 15px/1 system-ui,"Ubuntu Sans",Arial,sans-serif;letter-spacing:-.01em;padding:0 10px;min-height:56px;cursor:pointer}
+.g-btn small{display:block;font:500 9.5px/1 ui-monospace,"DejaVu Sans Mono",monospace;letter-spacing:.14em;margin-top:6px;opacity:.75}
+.g-btn.on{background:var(--lamp);color:var(--deep);box-shadow:0 0 0 6px rgba(255,196,107,.12),0 10px 30px -6px rgba(255,196,107,.55)}
+.g-btn.solid{background:var(--ink);border-color:var(--ink);color:var(--deep)}
+.g-done{position:absolute;left:20px;right:20px;bottom:18px;border:1px solid var(--line);border-radius:12px;padding:12px 14px;background:rgba(18,23,38,.85);font-size:13px;color:var(--mute)}
+.g-done b{color:var(--ink)}
+.desk .g{padding:22px 28px 22px}
+.desk .g-name{font-size:24px}
+.desk .g-read b{font-size:28px}
+.desk .g-village{height:92px}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="sh-head">
+    <div class="sh-id">
+      <div class="k">Réseau électrique · V1 · direction 01 / 03 · page Jeu</div>
+      <h1>Veillée</h1>
+      <div class="k" style="margin-top:14px">Refs : Raben Rifaie · Cron</div>
+    </div>
+    <div class="sh-why">
+      <p><b>La courbe de charge est l'écran.</b> Le joueur voit d'un coup d'œil la soirée entière : la demande du village qui monte vers 21 h, la production qui retombe au coucher du soleil, et le trou à combler.</p>
+      <p>Une seule lumière chaude, celle des lampadaires : tout ce qui est ambre veut dire « le village est éclairé », le bleu ne sert qu'à l'énergie qui circule. Les chiffres sont en mono, alignés comme un relevé de compteur, pour la précision.</p>
+      <p>C'est la direction du brief, tenue strictement : ton de veillée, tension douce, aucun ornement.</p>
+    </div>
+    <div class="sh-spec">
+      <div class="sw">
+        <span style="background:#1b2233;color:#e9ecf3">#1B2233<br>crépuscule</span>
+        <span style="background:#121726;color:#e9ecf3">#121726<br>nuit</span>
+        <span style="background:#ffc46b">#FFC46B<br>lampe · accent</span>
+        <span style="background:#38bdf8">#38BDF8<br>réseau · data</span>
+        <span style="background:#e9ecf3">#E9ECF3<br>texte</span>
+      </div>
+      <div class="ty">Titres : linéale système grasse, approche −2 %. Données : mono système, capitales espacées 14–16 %. Échelle 10 / 13 / 20 / 28. Mouvement : les lampadaires s'allument en fondu 240 ms de gauche à droite ; le curseur « maintenant » avance d'un quart d'heure par seconde.</div>
+    </div>
+  </div>
+
+  <div class="frames">
+    <div>
+      <div class="fr-l">Desktop · 1440 × 900 · post ouvert dans le feed</div>
+      <div class="desk">
+        <div class="d-top"><div class="d-logo"></div><div class="d-search">Search</div><div class="d-user"></div></div>
+        <div class="d-body">
+          <div class="d-nav"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div>
+            <div class="post">
+              <div class="post-h"><div class="av"></div><b>r/villagegrid</b> · posted by u/reseau-bot · 3h</div>
+              <div class="post-t">Evening 23 — the village needs you before 21:00</div>
+              <div class="post-body" data-game='{"now":10,"press":true}'></div>
+              <div class="post-f"><span>▲ 412 ▼</span><span>128 comments</span><span>Share</span></div>
+            </div>
+          </div>
+          <div class="d-side">
+            <div class="card"><h4>Tonight on the grid</h4>Same evening for everyone. Keep the street lit from 18:00 to midnight.</div>
+            <div class="card"><h4>Comments</h4>
+              <div class="cm"><b>u/lampwick · 94% lit</b>Held it all through the 21:00 peak, ran dry at 22:15.</div>
+              <div class="cm"><b>u/ohm_sweet_ohm · 88% lit</b>Released too early. The dinner bump fooled me.</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="fr-l">Mobile · 390 × 844 · même état</div>
+      <div class="mob">
+        <div class="m-status"><span>21:04</span><span>●●● ▮</span></div>
+        <div class="m-bar"><span>‹</span><span>r/villagegrid</span></div>
+        <div class="m-post"><div class="post-h"><div class="av"></div><b>u/reseau-bot</b> · 3h</div><div class="post-t">Evening 23 — the village needs you before 21:00</div></div>
+        <div class="m-body" data-game='{"now":10,"press":true}'></div>
+        <div class="m-f"><span>▲ 412 ▼</span><span>128</span><span>Share</span></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="states">
+    <div class="fr-l">États du jeu (mobile, réduit)</div>
+    <div class="st-row">
+      <div class="st"><div class="st-box" data-game='{"now":-1}'></div><b>Prêt</b><i>avant 18:00 · prévision seule · « Light the evening »</i></div>
+      <div class="st"><div class="st-box" data-game='{"now":4}'></div><b>Surplus</b><i>19:00 · relâché · le stock se remplit (bleu)</i></div>
+      <div class="st"><div class="st-box" data-game='{"now":10,"press":true}'></div><b>Pointe, on libère</b><i>20:30 · bouton maintenu · 12/12 · stock presque vide</i></div>
+      <div class="st"><div class="st-box" data-game='{"now":12,"press":true}'></div><b>Stock à sec</b><i>21:00 · 7/12 allumés · le manque en ambre</i></div>
+      <div class="st"><div class="st-box" data-game='{"now":24,"done":true}'></div><b>Déjà joué</b><i>courbe complète · « back tomorrow 18:00 »</i></div>
+    </div>
+  </div>
+
+  <div class="foot">Données de démo calculées dans la planche (même modèle pour les 3 directions) : demande 26 → 70 kW (pointe 20:45), production 66 → 40 kW au coucher du soleil, stock 0–100 kWh, le joueur de démo vide son stock à 20:45. Règle et contrôle proposés, à valider : voir G-DESIGN/PAGES.md, questions 1 à 5.</div>
+</div>
+
+<template id="tpl">
+  <div class="g">
+    <div class="g-top"><div><b class="g-name">Réseau électrique</b><span class="g-day mono">EVENING 23 · WED NOV 18</span></div><span class="g-streak">6-NIGHT STREAK</span></div>
+    <div class="g-read mono"><span>SUPPLY<b data-r="sup"></b></span><span>DEMAND<b data-r="dem"></b></span><span>GAP<b data-r="gap"></b></span></div>
+    <div class="g-chart" data-r="chart"></div>
+    <div class="g-village" data-r="vil"></div>
+    <p class="g-rule" data-r="rule"><b>Hold</b> to send stored power. <b>Let go</b> to save it.</p>
+    <div class="g-ctl"><div class="g-bat mono"><div class="lbl">STORED<b data-r="sto"></b></div><div class="cells" data-r="cells"></div></div><button class="g-btn" data-r="btn"></button></div>
+  </div>
+</template>
+
+<script>
+/* ---- shared demo model (identical in the 3 boards) ---- */
+const N = 25, CAP = 100;
+const hour = i => i * 0.25;
+const demandAt = t => 26 + 44 * Math.exp(-((t - 2.75) ** 2) / 1.4) + 8 * Math.exp(-((t - 1) ** 2) / 0.3);
+const supplyAt = t => 40 + 26 * Math.max(0, 1 - t / 1.6);
+const simulate = () => {
+  let store = 6; const out = [];
+  for (let i = 0; i < N; i++) {
+    const t = hour(i), d = demandAt(t), s = supplyAt(t);
+    let rel = 0;
+    if (s >= d) store = Math.min(CAP, store + (s - d) * 0.25 * 0.6);
+    else { rel = Math.min(d - s, store / 0.25); store -= rel * 0.25; }
+    const lit = Math.round(12 * Math.min(1, (s + rel) / d));
+    out.push({ t, d, s, rel, store, lit });
+  }
+  return out;
+};
+const SIM = simulate();
+const clock = i => { const m = 18 * 60 + i * 15; return String(Math.floor(m / 60) % 24).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0"); };
+const NS = "http://www.w3.org/2000/svg";
+const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+const svgIn = box => { const w = box.clientWidth, h = box.clientHeight; const s = el("svg", { viewBox: `0 0 ${w} ${h}` }); box.appendChild(s); return { s, w, h }; };
+
+/* ---- chart: curve as hero ---- */
+const drawChart = (box, now) => {
+  const { s, w, h } = svgIn(box);
+  const L = 30, R = w - 6, T = 10, B = h - 22, x = i => L + (R - L) * i / (N - 1), y = v => B - (B - T) * v / 80;
+  [20, 40, 60, 80].forEach(v => { el("line", { x1: L, x2: R, y1: y(v), y2: y(v), stroke: "rgba(233,236,243,.07)" }, s); const t = el("text", { x: 0, y: y(v) + 3, fill: "#8790a6", "font-size": 9, "font-family": "ui-monospace,DejaVu Sans Mono,monospace" }, s); t.textContent = v; });
+  [0, 4, 8, 12, 16, 20, 24].forEach(i => { const t = el("text", { x: x(i), y: h - 6, fill: "#8790a6", "font-size": 9, "text-anchor": "middle", "font-family": "ui-monospace,DejaVu Sans Mono,monospace" }, s); t.textContent = clock(i).replace(":00", "h"); });
+  const upto = Math.max(now, 0), pts = (a, f) => a.map((p, i) => `${x(i)},${y(f(p))}`).join(" ");
+  const past = SIM.slice(0, upto + 1), fut = SIM.slice(upto);
+  if (now >= 0) {
+    el("polygon", { points: `${x(0)},${B} ${pts(past, p => p.d)} ${x(upto)},${B}`, fill: "rgba(233,236,243,.06)" }, s);
+    const gap = past.map((p, i) => `${x(i)},${y(p.s + p.rel)}`).join(" ") + " " + past.map((p, i) => `${x(i)},${y(Math.max(p.d, p.s + p.rel))}`).reverse().join(" ");
+    el("polygon", { points: gap, fill: "rgba(255,196,107,.45)" }, s);
+    const relA = past.map((p, i) => `${x(i)},${y(p.s)}`).join(" ") + " " + past.map((p, i) => `${x(i)},${y(p.s + p.rel)}`).reverse().join(" ");
+    el("polygon", { points: relA, fill: "rgba(56,189,248,.28)" }, s);
+    el("polyline", { points: pts(past, p => p.d), fill: "none", stroke: "#e9ecf3", "stroke-width": 2 }, s);
+  }
+  el("polyline", { points: SIM.map((p, i) => i >= upto ? `${x(i)},${y(p.d)}` : "").filter(Boolean).join(" "), fill: "none", stroke: "rgba(233,236,243,.35)", "stroke-width": 1.5, "stroke-dasharray": "3 4" }, s);
+  el("polyline", { points: pts(SIM, p => p.s), fill: "none", stroke: "#38bdf8", "stroke-width": 1.5, opacity: now >= 0 ? 1 : .5 }, s);
+  if (now < 0) return;
+  el("line", { x1: x(now), x2: x(now), y1: T - 4, y2: B, stroke: "#ffc46b", "stroke-width": 1 }, s);
+  el("circle", { cx: x(now), cy: y(SIM[now].d), r: 4.5, fill: "#ffc46b" }, s);
+  const lab = el("text", { x: x(now) + (now > 18 ? -6 : 6), y: T + 4, fill: "#ffc46b", "font-size": 10, "font-weight": 600, "text-anchor": now > 18 ? "end" : "start", "font-family": "ui-monospace,DejaVu Sans Mono,monospace" }, s);
+  lab.textContent = "NOW " + clock(now);
+};
+
+/* ---- village: rooftops + 12 streetlamps ---- */
+const drawVillage = (box, lit, now) => {
+  const { s, w, h } = svgIn(box);
+  const base = h - 4, roofs = [[0,34,20],[.07,48,26],[.17,30,18],[.25,56,30],[.37,40,22],[.47,62,34],[.6,36,20],[.68,50,28],[.8,44,24],[.9,58,30]];
+  roofs.forEach(([fx, hh, ww], k) => {
+    const bx = fx * w, bw = ww * 2.2;
+    el("path", { d: `M${bx},${base} V${base - hh + 10} L${bx + bw / 2},${base - hh - 4} L${bx + bw},${base - hh + 10} V${base} Z`, fill: "#0e1220" }, s);
+    if (now >= 0 && (k * 7 + now) % 3 !== 0) el("rect", { x: bx + bw / 2 - 3, y: base - hh + 16, width: 6, height: 7, fill: "#ffc46b", opacity: .8 }, s);
+  });
+  for (let k = 0; k < 12; k++) {
+    const lx = (k + .5) * w / 12, on = now >= 0 && k < lit;
+    el("line", { x1: lx, x2: lx, y1: base, y2: base - 40, stroke: "#3a445e", "stroke-width": 2 }, s);
+    if (on) el("circle", { cx: lx, cy: base - 42, r: 16, fill: "url(#glow)" }, s);
+    el("circle", { cx: lx, cy: base - 42, r: 3.5, fill: on ? "#ffc46b" : "#3a445e" }, s);
+  }
+  const d = el("defs", {}, s), g = el("radialGradient", { id: "glow" }, d);
+  el("stop", { offset: 0, "stop-color": "#ffc46b", "stop-opacity": .55 }, g); el("stop", { offset: 1, "stop-color": "#ffc46b", "stop-opacity": 0 }, g);
+  el("line", { x1: 0, x2: w, y1: base, y2: base, stroke: "#3a445e" }, s);
+};
+
+/* ---- mount ---- */
+const fmt = v => Math.round(v);
+const mount = (host, o) => {
+  host.appendChild(document.getElementById("tpl").content.cloneNode(true));
+  const r = k => host.querySelector(`[data-r=${k}]`), now = o.now, p = now >= 0 ? SIM[now] : SIM[0];
+  const sup = p.s + (o.press ? p.rel : 0), gap = sup - p.d;
+  r("sup").innerHTML = now < 0 ? "—" : `${fmt(sup)}<small>kW</small>`;
+  r("dem").innerHTML = now < 0 ? "—" : `${fmt(p.d)}<small>kW</small>`;
+  r("gap").innerHTML = now < 0 ? "—" : `<em class="${gap < -0.5 ? "neg" : ""}">${gap >= 0 ? "+" : "−"}${Math.abs(fmt(gap))}</em><small>kW</small>`;
+  const sto = now < 0 ? 6 : p.store;
+  r("sto").textContent = `${fmt(sto)} kWh`;
+  r("cells").innerHTML = Array.from({ length: 10 }, (_, k) => `<i class="${k < Math.round(sto / 10) ? "on" : ""}"></i>`).join("");
+  const btn = r("btn");
+  if (now < 0) { btn.className = "g-btn solid"; btn.innerHTML = "Light the evening<small>18:00 → 00:00</small>"; }
+  else { btn.className = "g-btn" + (o.press ? " on" : ""); btn.innerHTML = (o.press ? "Releasing" : "Hold to release") + `<small>${o.press ? "STORE → STREET" : "SURPLUS → STORE"}</small>`; }
+  requestAnimationFrame(() => { drawChart(r("chart"), now); drawVillage(r("vil"), p.lit, now); });
+  if (o.done) {
+    r("rule").remove(); host.querySelector(".g-ctl").remove();
+    host.querySelector(".g").insertAdjacentHTML("beforeend", `<div class="g-done"><b>Tonight: 95% lit.</b> Next evening at 18:00 · same grid for everyone.</div>`);
+  }
+};
+document.querySelectorAll("[data-game]").forEach(h => mount(h, JSON.parse(h.dataset.game)));
+</script>
+</body>
+</html>
