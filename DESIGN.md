@@ -29,3 +29,15 @@ Journal design (Claude). Versions datées, jamais écrasées. Livrables dans `G-
 **Gaia retient la direction 03 « Maquette »** (et non la recommandation 02). Style formalisé dans `G-DESIGN/STYLE.md`.
 
 **Changelog** : ajout de `G-DESIGN/STYLE.md` ; page Jeu passée « validée » dans `PAGES.md`. Prochaine étape : planches Post, Carte de fin, Séries & classement dans ce style (non commencées).
+
+## V1 · déclinaison — 2026-11-18
+
+Planches des 3 pages restantes, dans la continuité stricte de `G-DESIGN/STYLE.md` (même chrome, même maquette, mêmes données de démo) :
+
+- `planches/v1/p1-post.html` — **Post** : splash 512 px dans le feed ; maquette rue éteinte + prévision du soir (« Peak ≈ 20:45 · 70 kW ») + un bouton. États : pas encore joué, déjà joué (95 %, top 3 %), chargement, série cassée.
+- `planches/v1/p3-carte-de-fin.html` — **Carte de fin** : % géant + maquette à minuit, lampes éteintes / stock utilisé / rang, courbe complète, histogramme des voisins, accroche commentaire pré-rédigée, prochaine soirée. États : soirée parfaite (rang =1), soirée difficile (recalculée), commentaire posté, première soirée.
+- `planches/v1/p4-series-classement.html` — **Séries & classement** : onglets Tonight / My nights (côte à côte sur desktop) ; classement avec ta ligne en bleu, répartition ; série 7, 14 dernières soirées. États : My nights, première soirée, pas encore joué (classement flouté).
+
+**Hypothèses produit** posées pour pouvoir dessiner (Q5, Q6, Q7 + 2 nouvelles) : listées en bas de `G-DESIGN/PAGES.md`.
+
+**Changelog** : +3 planches ; `PAGES.md` : 3 pages « en revue », Jeu « validée », section hypothèses. `/lock` possible dès que ces 3 planches sont validées.
