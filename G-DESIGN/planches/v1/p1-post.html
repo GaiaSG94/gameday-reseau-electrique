@@ -1,0 +1,338 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Réseau électrique · V1 · Maquette · page Post</title>
+<style>
+/* ============ SHEET (planche) ============ */
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{background:#cfd1d6}
+body{font-family:system-ui,"Ubuntu Sans","Segoe UI","Helvetica Neue",Arial,sans-serif;color:#15181f;overflow-x:auto}
+.mono,.k,.fr-l{font-family:ui-monospace,"JetBrains Mono","DejaVu Sans Mono",Menlo,Consolas,monospace}
+.sheet{width:1980px;padding:40px 48px 56px}
+.sh-head{display:grid;grid-template-columns:400px 1fr 520px;gap:40px;align-items:start;margin-bottom:32px}
+.k,.fr-l{font-size:11px;font-weight:600;letter-spacing:.12em;text-transform:uppercase;color:#5c626e}
+.sh-id h1{font-size:44px;line-height:1.05;font-weight:700;letter-spacing:-.03em;margin-top:10px}
+.sh-why{font-size:15px;line-height:1.55;max-width:720px;color:#262a33}
+.sh-why p+p{margin-top:8px}
+.sw{display:flex;gap:8px}
+.sw span{flex:1;height:58px;border-radius:4px;padding:6px;font:10px/1.3 ui-monospace,"DejaVu Sans Mono",monospace;display:flex;align-items:flex-end;border:1px solid rgba(0,0,0,.08)}
+.ty{font-size:12px;color:#414652;line-height:1.5;margin-top:10px}
+.frames{display:flex;gap:48px;align-items:flex-start}
+.fr-l{margin-bottom:10px}
+.states{margin-top:44px}
+.st-row{display:flex;gap:28px;margin-top:12px}
+.st{width:186px}
+.st-box{width:186px;height:330px;border-radius:12px;overflow:hidden;box-shadow:0 14px 30px -18px rgba(0,0,0,.5);position:relative}
+.st-box>.g{position:absolute;left:0;top:0;width:362px;height:642px;transform:scale(.5138);transform-origin:0 0}
+.st>b{display:block;font-size:13px;margin-top:10px}
+.st>i{display:block;font:normal 11px/1.4 ui-monospace,"DejaVu Sans Mono",monospace;color:#5c626e;margin-top:3px}
+.foot{margin-top:36px;max-width:1200px;font:12px/1.6 ui-monospace,"DejaVu Sans Mono",monospace;color:#5c626e}
+
+/* ============ NEUTRAL HOST CHROME (generic feed, not branded) ============ */
+.desk{width:1440px;height:900px;background:#f5f6f7;border-radius:10px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.35)}
+.d-top{height:56px;background:#fff;border-bottom:1px solid #e4e6e8;display:flex;align-items:center;gap:24px;padding:0 24px}
+.d-logo{width:96px;height:22px;border-radius:6px;background:#dfe2e5}
+.d-search{flex:0 0 560px;margin:0 auto;height:38px;border-radius:19px;background:#eef0f2;color:#8a9096;font-size:14px;display:flex;align-items:center;padding:0 18px}
+.d-user{width:34px;height:34px;border-radius:50%;background:#dfe2e5}
+.d-body{display:grid;grid-template-columns:240px 768px 330px;gap:28px;padding:16px 24px 0;justify-content:center}
+.d-nav{display:flex;flex-direction:column;gap:14px;padding-top:8px}
+.d-nav span{height:12px;border-radius:6px;background:#e3e6e9}
+.d-nav span:nth-child(3n){width:70%}.d-nav span:nth-child(4n){width:55%}
+.post{background:#fff;border:1px solid #e4e6e8;border-radius:12px;padding:10px 16px 4px}
+.post-h{display:flex;align-items:center;gap:8px;font-size:12px;color:#6b7176;height:26px}
+.av{width:22px;height:22px;border-radius:50%;background:#1b2233;position:relative;flex:none}
+.av:after{content:"";position:absolute;left:8px;top:6px;width:6px;height:6px;border-radius:50%;background:#ffc46b;box-shadow:0 0 6px #ffc46b}
+.post-h b{color:#1f2326;font-weight:600}
+.post-t{font-size:18px;font-weight:600;color:#1f2326;margin:2px 0 8px;letter-spacing:-.01em}
+.post-body{border-radius:10px;overflow:hidden;height:640px;position:relative}
+.post-f{display:flex;gap:10px;height:40px;align-items:center;font-size:12px;font-weight:600;color:#53595e}
+.post-f span{background:#eef0f2;border-radius:16px;padding:7px 12px}
+.card{background:#fff;border:1px solid #e4e6e8;border-radius:12px;padding:16px;font-size:13px;color:#3b4146;line-height:1.5}
+.card h4{font-size:14px;color:#1f2326;margin-bottom:6px}
+.card+.card{margin-top:16px}
+.cm{border-top:1px solid #eef0f2;padding:10px 0}
+.cm b{font-size:12px;color:#6b7176;font-weight:600;display:block;margin-bottom:2px}
+.mob{width:390px;height:844px;background:#fff;border-radius:44px;overflow:hidden;box-shadow:0 30px 60px -30px rgba(0,0,0,.4);outline:10px solid #111;display:flex;flex-direction:column}
+.m-status{height:44px;flex:none;display:flex;justify-content:space-between;align-items:center;padding:0 28px;font-size:14px;font-weight:600}
+.m-bar{height:42px;flex:none;display:flex;align-items:center;gap:12px;padding:0 14px;border-bottom:1px solid #eceef0;font-size:14px;font-weight:600}
+.m-post{padding:8px 14px;flex:none}
+.m-post .post-t{font-size:15px;margin:0}
+.m-body{flex:1;margin:0 14px;border-radius:10px;overflow:hidden;position:relative}
+.m-f{height:52px;flex:none;display:flex;gap:10px;align-items:center;padding:0 14px;font-size:12px;font-weight:600;color:#53595e}
+.m-f span{background:#eef0f2;border-radius:16px;padding:7px 12px}
+
+/* ============ GAME · direction Maquette ============ */
+.av{background:#111214}.av:after{background:#1f63ff;box-shadow:0 0 6px #1f63ff}
+.g{--bg:#ecebe6;--ink:#111214;--mute:#77756e;--line:#d8d6ce;--acc:#1f63ff;
+  position:absolute;inset:0;color:var(--ink);display:flex;flex-direction:column;padding:16px 18px;gap:10px;
+  background:radial-gradient(90% 55% at 50% 38%,#fbfbf9 0%,var(--bg) 70%,#e2e1db 100%);
+  font-family:system-ui,"Ubuntu Sans","Segoe UI","Helvetica Neue",Arial,sans-serif}
+.cond{font-family:"Ubuntu Sans","Roboto Condensed","Arial Narrow","Nimbus Sans Narrow","Helvetica Neue",sans-serif;font-stretch:62%;font-weight:800}
+.g-top{display:flex;justify-content:space-between;align-items:flex-start;order:0}
+.g-name{display:block;font:800 36px/.86 "Ubuntu Sans","Roboto Condensed","Arial Narrow","Nimbus Sans Narrow",sans-serif;font-stretch:62%;text-transform:uppercase;letter-spacing:-.01em}
+.g-day{display:block;font-size:10.5px;letter-spacing:.12em;color:var(--mute);margin-top:7px}
+.g-streak{font:600 10.5px/1 ui-monospace,"DejaVu Sans Mono",monospace;letter-spacing:.1em;background:var(--ink);color:#fff;border-radius:6px;padding:8px 10px;white-space:nowrap}
+.g-village{flex:1;min-height:0;position:relative;order:1}
+.g-read{display:grid;grid-template-columns:repeat(3,1fr);order:2;padding:0 2px}
+.g-read span{font-size:9.5px;letter-spacing:.16em;color:var(--mute)}
+.g-read b{display:block;font:800 30px/1 "Ubuntu Sans","Roboto Condensed","Arial Narrow","Nimbus Sans Narrow",sans-serif;font-stretch:62%;color:var(--ink);margin-top:3px}
+.g-read b small{font:500 11px/1 ui-monospace,"DejaVu Sans Mono",monospace;color:var(--mute);margin-left:3px}
+.g-read em{font-style:normal}.g-read .neg{color:var(--acc)}
+.g-chart{height:104px;flex:none;position:relative;order:3;background:#fff;border:1px solid var(--line);border-radius:14px;box-shadow:0 12px 24px -18px rgba(0,0,0,.35)}
+.g-chart svg,.g-village svg{position:absolute;inset:0;width:100%;height:100%;overflow:visible}
+.g-rule{font-size:13px;color:var(--mute);text-align:center;order:4}
+.g-rule b{color:var(--ink);font-weight:700}
+.g-ctl{display:grid;grid-template-columns:1fr 1.25fr;gap:10px;order:5}
+.g-bat{background:#fff;border:1px solid var(--line);border-radius:12px;padding:9px 12px;display:flex;flex-direction:column;justify-content:space-between}
+.g-bat .lbl{display:flex;justify-content:space-between;font-size:9.5px;letter-spacing:.16em;color:var(--mute)}
+.g-bat .lbl b{color:var(--ink);letter-spacing:0;font-size:12px}
+.cells{display:grid;grid-template-columns:repeat(10,1fr);gap:3px;margin-top:8px}
+.cells i{height:14px;border-radius:3px;background:#ecebe6}
+.cells i.on{background:var(--acc)}
+.g-btn{border:0;background:var(--ink);color:#fff;border-radius:12px;font:700 15px/1 system-ui,"Ubuntu Sans",Arial,sans-serif;padding:0 10px;min-height:56px;cursor:pointer}
+.g-btn small{display:block;font:500 9.5px/1 ui-monospace,"DejaVu Sans Mono",monospace;letter-spacing:.14em;margin-top:6px;opacity:.7}
+.g-btn.on{background:var(--acc);box-shadow:0 12px 26px -10px rgba(31,99,255,.8)}
+.g-btn.solid{background:var(--ink)}
+.g-done{position:absolute;left:18px;right:18px;bottom:16px;background:var(--ink);color:#c9c8c2;border-radius:12px;padding:12px 14px;font-size:13px}
+.g-done b{color:#fff}
+.desk .g{padding:20px 26px}
+.desk .g-name{font-size:44px}
+.desk .g-read b{font-size:36px}
+.desk .g{display:grid;grid-template-columns:1.1fr 1fr;grid-template-rows:auto auto 1fr auto auto;column-gap:22px;row-gap:12px}
+.desk .g-top{grid-column:1/3}
+.desk .g-village{grid-column:1;grid-row:2/6}
+.desk .g-read,.desk .g-chart,.desk .g-rule,.desk .g-ctl{grid-column:2}
+.desk .g-read{grid-row:2}.desk .g-chart{grid-row:3;height:auto;min-height:150px}.desk .g-rule{grid-row:4;text-align:left}.desk .g-ctl{grid-row:5;grid-template-columns:1fr}
+.desk .g-done{left:auto;width:46%}
+/* ============ PAGE · Post (splash dans le feed) ============ */
+.feed2{background:#fff;border:1px solid #e4e6e8;border-radius:12px;padding:12px 16px;margin-top:16px}
+.feed2 i{display:block;height:12px;border-radius:6px;background:#e3e6e9;margin:8px 0}
+.feed2 .ph{height:180px;border-radius:10px;background:#eef0f2;margin-top:10px}
+.sp .g-village{order:1}
+.sp-fc{order:2;display:flex;flex-direction:column;gap:6px}
+.sp-fc .g-chart{order:0;height:78px}
+.sp-l{display:flex;justify-content:space-between;align-items:baseline;font-size:9.5px;letter-spacing:.16em;color:var(--mute)}
+.sp-l b{font:800 20px/1 "Ubuntu Sans","Roboto Condensed","Arial Narrow","Nimbus Sans Narrow",sans-serif;font-stretch:62%;letter-spacing:0;color:var(--ink)}
+.sp-res{order:2;background:#fff;border:1px solid var(--line);border-radius:14px;padding:12px 14px;display:flex;align-items:center;gap:14px}
+.sp-res b{font:800 46px/.9 "Ubuntu Sans","Roboto Condensed","Arial Narrow","Nimbus Sans Narrow",sans-serif;font-stretch:62%}
+.sp-res b small{font-size:22px}
+.sp-res span{font-size:12.5px;color:var(--mute);line-height:1.35}
+.sp-res span em{font-style:normal;color:var(--acc);font-weight:700}
+.sp-cta{order:3;display:flex;flex-direction:column;gap:8px}
+.sp-cta .g-btn{width:100%}
+.sp-n{font-size:9.5px;letter-spacing:.16em;color:var(--mute);text-align:center}
+.g-btn.ghost{background:#d8d6ce;color:#77756e}
+.st-box.spb{height:226px}.st-box.spb>.g{height:440px}
+.desk .sp{display:grid;grid-template-columns:1.15fr 1fr;grid-template-rows:auto 1fr auto auto;column-gap:22px;row-gap:12px}
+.desk .sp .g-top{grid-column:1/3}
+.desk .sp .g-village{grid-column:1;grid-row:2/5}
+.desk .sp .sp-fc,.desk .sp .sp-res{grid-column:2;grid-row:3}
+.desk .sp .sp-cta{grid-column:2;grid-row:4}
+.desk .sp .g-chart{min-height:0;height:96px}
+</style>
+</head>
+<body>
+<div class="sheet">
+  <div class="sh-head">
+    <div class="sh-id">
+      <div class="k">Réseau électrique · V1 · style Maquette (validé) · page 1 / 4</div>
+      <h1>Post</h1>
+      <div class="k" style="margin-top:14px">Splash dans le feed · avant d'entrer dans le jeu</div>
+    </div>
+    <div class="sh-why">
+      <p><b>Le post doit arrêter le pouce.</b> La maquette du village, rue éteinte, fait l'image ; à côté, la prévision du soir dit l'enjeu en un chiffre (« pointe vers 20:45 »). Un seul bouton.</p>
+      <p>Une fois joué, le même post montre le village allumé à ton niveau et ton résultat, pour donner envie aux autres d'essayer de faire mieux sur la même soirée.</p>
+      <p>Hauteur du splash : 512 px sur desktop (post « tall »), toute la largeur sur mobile.</p>
+    </div>
+    <div class="sh-spec">
+      <div class="sw">
+        <span style="background:#ecebe6">#ECEBE6<br>table</span>
+        <span style="background:#fff">#FFFFFF<br>fiche</span>
+        <span style="background:#d8d6ce">#D8D6CE<br>socle</span>
+        <span style="background:#111214;color:#ecebe6">#111214<br>encre</span>
+        <span style="background:#1f63ff;color:#fff">#1F63FF<br>énergie · accent</span>
+      </div>
+      <div class="ty">Tout vient de G-DESIGN/STYLE.md : titre condensé, mono pour les libellés, fiches blanches 1 px, bouton encre. Mouvement : à l'apparition dans le feed, les fenêtres de la maquette s'allument une par une (400 ms), les lampadaires restent éteints jusqu'au clic.</div>
+    </div>
+  </div>
+  <div class="frames">
+    <div>
+      <div class="fr-l">Desktop · 1440 × 900 · le post dans le feed (pas encore joué)</div>
+      <div class="desk">
+        <div class="d-top"><div class="d-logo"></div><div class="d-search">Search</div><div class="d-user"></div></div>
+        <div class="d-body">
+          <div class="d-nav"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></div>
+          <div>
+            <div class="post">
+              <div class="post-h"><div class="av"></div><b>r/villagegrid</b> · posted by u/reseau-bot · 3h</div>
+              <div class="post-t">Evening 23 — the village needs you before 21:00</div>
+              <div class="post-body" style="height:512px" data-page='{"p":"post"}'></div>
+              <div class="post-f"><span>▲ 412 ▼</span><span>128 comments</span><span>Share</span></div>
+            </div>
+            <div class="feed2"><i style="width:30%"></i><i style="width:65%"></i><div class="ph"></div></div>
+          </div>
+          <div class="d-side">
+            <div class="card"><h4>r/villagegrid</h4>One evening a day. Same village for everyone. Keep the street lit.</div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="fr-l">Mobile · 390 × 844 · même post, déjà joué</div>
+      <div class="mob">
+        <div class="m-status"><span>21:58</span><span>●●● ▮</span></div>
+        <div class="m-bar"><span>Home</span></div>
+        <div class="m-post"><div class="post-h"><div class="av"></div><b>r/villagegrid</b> · 3h</div><div class="post-t">Evening 23 — the village needs you before 21:00</div></div>
+        <div class="m-body" style="flex:none;height:440px" data-page='{"p":"post","played":true}'></div>
+        <div class="m-f"><span>▲ 412 ▼</span><span>128</span><span>Share</span></div>
+        <div style="margin:0 14px;flex:1;border-radius:10px;background:#eef0f2"></div>
+      </div>
+    </div>
+  </div>
+  <div class="states">
+    <div class="fr-l">États du post (mobile, réduit)</div>
+    <div class="st-row">
+      <div class="st"><div class="st-box spb" data-page='{"p":"post"}'></div><b>Pas encore joué</b><i>rue éteinte · prévision · « Light the evening »</i></div>
+      <div class="st"><div class="st-box spb" data-page='{"p":"post","played":true}'></div><b>Déjà joué</b><i>rue allumée à ton niveau · ton % · rang</i></div>
+      <div class="st"><div class="st-box spb" data-page='{"p":"post","loading":true}'></div><b>Chargement</b><i>socle seul · bouton gris · « Wiring evening 23… »</i></div>
+      <div class="st"><div class="st-box spb" data-page='{"p":"post","broken":true}'></div><b>Série cassée</b><i>« STREAK 00 » · le bouton relance une série</i></div>
+    </div>
+  </div>
+  <div class="foot">Hypothèses (questions 5, 6 et 7 de PAGES.md, non tranchées) : score = % de la soirée éclairée, une seule partie par jour, nombre de joueurs du jour affiché. Données de démo identiques à la page Jeu (03-maquette.html).</div>
+</div>
+
+<template id="tpl">
+  <div class="g">
+    <div class="g-top"><div><b class="g-name">Réseau<br>électrique</b><span class="g-day mono">EVENING 23 · WED NOV 18</span></div><span class="g-streak">STREAK 06</span></div>
+    <div class="g-read mono"><span>SUPPLY<b data-r="sup"></b></span><span>DEMAND<b data-r="dem"></b></span><span>GAP<b data-r="gap"></b></span></div>
+    <div class="g-chart" data-r="chart"></div>
+    <div class="g-village" data-r="vil"></div>
+    <p class="g-rule" data-r="rule"><b>Hold</b> to send stored power. <b>Let go</b> to save it.</p>
+    <div class="g-ctl"><div class="g-bat mono"><div class="lbl">STORED<b data-r="sto"></b></div><div class="cells" data-r="cells"></div></div><button class="g-btn" data-r="btn"></button></div>
+  </div>
+</template>
+<template id="tpl-post">
+  <div class="g sp">
+    <div class="g-top"><div><b class="g-name">Réseau<br>électrique</b><span class="g-day mono">EVENING 23 · WED NOV 18</span></div><span class="g-streak" data-r="streak">STREAK 06</span></div>
+    <div class="g-village" data-r="vil"></div>
+    <div class="sp-fc" data-r="fc"><div class="sp-l mono">TONIGHT'S FORECAST<b>Peak ≈ 20:45 · 70 kW</b></div><div class="g-chart" data-r="chart"></div></div>
+    <div class="sp-cta"><button class="g-btn" data-r="btn">Light the evening<small>18:00 → 00:00</small></button><span class="sp-n mono" data-r="n">1,284 NEIGHBOURS PLAYED TONIGHT</span></div>
+  </div>
+</template>
+<script>
+/* ---- shared demo model (identical in the 3 boards) ---- */
+const N = 25, CAP = 100;
+const hour = i => i * 0.25;
+const demandAt = t => 26 + 44 * Math.exp(-((t - 2.75) ** 2) / 1.4) + 8 * Math.exp(-((t - 1) ** 2) / 0.3);
+const supplyAt = t => 40 + 26 * Math.max(0, 1 - t / 1.6);
+const simulate = () => {
+  let store = 6; const out = [];
+  for (let i = 0; i < N; i++) {
+    const t = hour(i), d = demandAt(t), s = supplyAt(t);
+    let rel = 0;
+    if (s >= d) store = Math.min(CAP, store + (s - d) * 0.25 * 0.6);
+    else { rel = Math.min(d - s, store / 0.25); store -= rel * 0.25; }
+    const lit = Math.round(12 * Math.min(1, (s + rel) / d));
+    out.push({ t, d, s, rel, store, lit });
+  }
+  return out;
+};
+const SIM = simulate();
+const clock = i => { const m = 18 * 60 + i * 15; return String(Math.floor(m / 60) % 24).padStart(2, "0") + ":" + String(m % 60).padStart(2, "0"); };
+const NS = "http://www.w3.org/2000/svg";
+const el = (tag, attrs, parent) => { const e = document.createElementNS(NS, tag); for (const k in attrs) e.setAttribute(k, attrs[k]); if (parent) parent.appendChild(e); return e; };
+const svgIn = box => { const w = box.clientWidth, h = box.clientHeight; const s = el("svg", { viewBox: `0 0 ${w} ${h}` }); box.appendChild(s); return { s, w, h }; };
+
+/* ---- chart strip: the curve as a reading card ---- */
+const MONO = "ui-monospace,DejaVu Sans Mono,monospace", ACC = "#1f63ff";
+const drawChart = (box, now) => {
+  const { s, w, h } = svgIn(box);
+  const L = 12, R = w - 12, T = 12, B = h - 22, x = i => L + (R - L) * i / (N - 1), y = v => B - (B - T) * v / 76;
+  [0, 8, 16, 24].forEach(i => { const t = el("text", { x: x(i), y: h - 8, fill: "#77756e", "font-size": 9, "text-anchor": i === 0 ? "start" : i === 24 ? "end" : "middle", "font-family": MONO }, s); t.textContent = clock(i); });
+  el("line", { x1: L, x2: R, y1: B, y2: B, stroke: "#d8d6ce" }, s);
+  const upto = Math.max(now, 0), past = SIM.slice(0, upto + 1);
+  const band = (a, lo, hi) => a.map((p, i) => `${x(i)},${y(lo(p))}`).join(" ") + " " + a.map((p, i) => `${x(i)},${y(hi(p))}`).reverse().join(" ");
+  el("polyline", { points: SIM.map((p, i) => `${x(i)},${y(p.s)}`).join(" "), fill: "none", stroke: "#a8a69e", "stroke-width": 1.4, "stroke-dasharray": "4 3" }, s);
+  if (now >= 0) {
+    el("polygon", { points: band(past, p => p.s, p => p.s + p.rel), fill: ACC, opacity: .85 }, s);
+    el("polygon", { points: band(past, p => p.s + p.rel, p => Math.max(p.d, p.s + p.rel)), fill: "#111214" }, s);
+    el("polyline", { points: past.map((p, i) => `${x(i)},${y(p.d)}`).join(" "), fill: "none", stroke: "#111214", "stroke-width": 2 }, s);
+  }
+  el("polyline", { points: SIM.slice(upto).map((p, k) => `${x(upto + k)},${y(p.d)}`).join(" "), fill: "none", stroke: "#111214", "stroke-width": 1.3, "stroke-dasharray": "1.5 3.5", "stroke-linecap": "round" }, s);
+  if (now < 0) return;
+  el("line", { x1: x(now), x2: x(now), y1: T - 6, y2: B, stroke: ACC, "stroke-width": 1.5 }, s);
+  const lab = el("text", { x: x(now) + (now > 18 ? -5 : 5), y: T, fill: ACC, "font-size": 9.5, "font-weight": 700, "text-anchor": now > 18 ? "end" : "start", "font-family": MONO }, s); lab.textContent = clock(now);
+};
+
+/* ---- diorama: isometric village on a floating slab ---- */
+const C30 = 0.866, S30 = 0.5;
+const isoKit = (s, w, h) => {
+  const X = 10, Y = 4.6, u = Math.min((w - 12) / ((X + Y) * C30), (h - 8) / ((X + Y) * S30 + 3.2));
+  const ox = w / 2 - (X - Y) * C30 * u / 2, oy = (h - ((X + Y) * S30 + 3.2) * u) / 2 + 2.5 * u;
+  const P = (x, y, z) => [ox + (x - y) * C30 * u, oy + (x + y) * S30 * u - z * u];
+  const poly = (pts, fill, extra) => el("polygon", Object.assign({ points: pts.map(p => P(...p).join(",")).join(" "), fill, stroke: "#111214", "stroke-width": .8, "stroke-linejoin": "round" }, extra || {}), s);
+  const box = (x, y, z, dx, dy, dz, c) => {
+    poly([[x, y + dy, z], [x + dx, y + dy, z], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], c[1]);
+    poly([[x + dx, y, z], [x + dx, y + dy, z], [x + dx, y + dy, z + dz], [x + dx, y, z + dz]], c[2]);
+    poly([[x, y, z + dz], [x + dx, y, z + dz], [x + dx, y + dy, z + dz], [x, y + dy, z + dz]], c[0]);
+  };
+  return { u, P, poly, box };
+};
+const drawHouse = (k, x, dz, lit, now) => {
+  const { poly, box } = k, y = .3, dx = 1.25, dy = 1.2, zr = dz + .7, ym = y + dy / 2;
+  box(x, y, 0, dx, dy, dz, ["#fff", "#f4f3ef", "#dddbd3"]);
+  poly([[x, ym, zr], [x + dx, ym, zr], [x + dx, y + dy, dz], [x, y + dy, dz]], "#2a2b2f");
+  poly([[x + dx, y, dz], [x + dx, y + dy, dz], [x + dx, ym, zr]], "#dddbd3");
+  const yf = y + dy, on = now >= 0 && lit;
+  poly([[x + .42, yf, .35], [x + .82, yf, .35], [x + .82, yf, .75], [x + .42, yf, .75]], on ? "#cfe0ff" : "#c9c7bf", { "stroke-width": .6 });
+};
+const drawVillage = (box, lit, now) => {
+  const { s, w, h } = svgIn(box), k = isoKit(s, w, h), { P, poly, u } = k, p = now >= 0 ? SIM[now] : null;
+  const c = P(5, 2.3, -1.2); el("ellipse", { cx: c[0], cy: c[1] + u * .6, rx: u * 6.6, ry: u * 1.5, fill: "rgba(0,0,0,.10)" }, s);
+  k.box(0, 0, -.7, 10, 4.6, .7, ["#fbfbf9", "#d8d6ce", "#c6c4bc"]);
+  poly([[0, 1.8, 0], [10, 1.8, 0], [10, 2.6, 0], [0, 2.6, 0]], "#e4e2db", { "stroke-width": 0 });
+  el("line", { x1: P(0, 2.2, 0)[0], y1: P(0, 2.2, 0)[1], x2: P(10, 2.2, 0)[0], y2: P(10, 2.2, 0)[1], stroke: "#fff", "stroke-width": 1.5, "stroke-dasharray": "6 6" }, s);
+  [[.5, 1.1], [2.1, 1.6], [3.7, 1.0], [5.3, 1.8], [6.9, 1.2], [8.5, 1.5]].forEach(([x, dz], i) => drawHouse(k, x, dz, (i * 5 + Math.max(now, 0)) % 4 !== 0, now));
+  const releasing = p && p.rel > 0, cab = [P(.3, 3.2, .02), P(7.6, 3.2, .02)];
+  el("line", { x1: cab[0][0], y1: cab[0][1], x2: cab[1][0], y2: cab[1][1], stroke: releasing ? ACC : "#a8a69e", "stroke-width": releasing ? 2.4 : 1.4, "stroke-dasharray": releasing ? "8 5" : "none" }, s);
+  for (let i = 0; i < 12; i++) {
+    const lx = .45 + i * .78, on = now >= 0 && i < lit, b = P(lx, 2.9, 0), t = P(lx, 2.9, 1.5);
+    if (on) el("circle", { cx: t[0], cy: t[1], r: u * .75, fill: ACC, opacity: .16 }, s);
+    el("line", { x1: b[0], y1: b[1], x2: t[0], y2: t[1], stroke: "#111214", "stroke-width": 1.4 }, s);
+    el("circle", { cx: t[0], cy: t[1], r: Math.max(2.4, u * .14), fill: on ? ACC : "#fff", stroke: "#111214", "stroke-width": .8 }, s);
+  }
+  const st = now >= 0 ? p.store : 6, bx = 7.7, by = 3.45, dx = 1.8, dy = 1.0, dz = 1.5, lvl = dz * st / CAP;
+  k.box(bx, by, 0, dx, dy, dz, ["#fff", "#f4f3ef", "#dddbd3"]);
+  if (lvl > .02) poly([[bx + dx, by, 0], [bx + dx, by + dy, 0], [bx + dx, by + dy, lvl], [bx + dx, by, lvl]], ACC);
+  const f = P(bx + .18, by + dy, .45), t = el("text", { transform: `matrix(${C30},${S30},0,1,${f[0]},${f[1]})`, "font-size": u * .62, "font-weight": 800, fill: "#111214", "font-family": "Ubuntu Sans,Arial Narrow,sans-serif", "font-stretch": "62%" }, s);
+  t.textContent = Math.round(st) + " kWh";
+  const f2 = P(bx + .18, by + dy, 1.05), t2 = el("text", { transform: `matrix(${C30},${S30},0,1,${f2[0]},${f2[1]})`, "font-size": u * .3, fill: "#77756e", "font-family": MONO, "letter-spacing": ".1em" }, s);
+  t2.textContent = "STORE";
+};
+/* ---- mount: post splash ---- */
+const tplOf = id => document.getElementById(id).content.cloneNode(true);
+const mountPost = (host, o) => {
+  host.appendChild(tplOf("tpl-post"));
+  const r = k => host.querySelector(`[data-r=${k}]`), btn = r("btn");
+  if (o.played) {
+    r("fc").outerHTML = `<div class="sp-res"><b>95<small>%</small></b><span>of the street stayed lit.<br><em>Top 3%</em> of 1,284 neighbours.</span></div>`;
+    r("streak").textContent = "STREAK 07";
+    btn.innerHTML = "See tonight's board<small>RESULTS · COMMENTS</small>";
+    r("n").textContent = "NEXT EVENING AT 18:00";
+  }
+  if (o.loading) { btn.className = "g-btn ghost"; btn.innerHTML = "Wiring evening 23…<small>LOADING</small>"; r("n").textContent = " "; }
+  if (o.broken) { r("streak").textContent = "STREAK 00"; btn.innerHTML = "Light the evening<small>START A NEW STREAK</small>"; }
+  requestAnimationFrame(() => {
+    if (!o.loading) drawVillage(r("vil"), o.played ? 12 : 0, o.played ? 24 : -1);
+    else { const { s, w, h } = svgIn(r("vil")), k = isoKit(s, w, h); k.box(0, 0, -.7, 10, 4.6, .7, ["#fbfbf9", "#d8d6ce", "#c6c4bc"]); }
+    if (r("chart")) drawChart(r("chart"), -1);
+  });
+};
+const MOUNT = { post: mountPost };
+document.querySelectorAll("[data-page]").forEach(h => { const o = JSON.parse(h.dataset.page); MOUNT[o.p](h, o); });
+
+</script>
+</body>
+</html>
