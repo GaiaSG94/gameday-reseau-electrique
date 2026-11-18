@@ -41,3 +41,13 @@ Planches des 3 pages restantes, dans la continuité stricte de `G-DESIGN/STYLE.m
 **Hypothèses produit** posées pour pouvoir dessiner (Q5, Q6, Q7 + 2 nouvelles) : listées en bas de `G-DESIGN/PAGES.md`.
 
 **Changelog** : +3 planches ; `PAGES.md` : 3 pages « en revue », Jeu « validée », section hypothèses. `/lock` possible dès que ces 3 planches sont validées.
+
+## V1 · LOCK — 2026-11-18
+
+Gaia valide les 3 planches de la déclinaison telles quelles et verrouille le style (`/lock`). **4/4 pages validées** : Post (`p1-post`), Jeu (`03-maquette`), Carte de fin (`p3-carte-de-fin`), Séries & classement (`p4-series-classement`).
+
+La validation vaut aussi pour les choix produit dessinés : un seul geste (maintenir = libérer, relâcher = stocker), prévision visible, coupures = lampadaires éteints (pas de black-out), score = % de rue éclairée, ex æquo départagés par les kWh restés à minuit, une partie par jour, série +1 par soirée jouée, classement flouté avant de jouer, accroche commentaire pré-rédigée.
+
+**Pour le build (opencode)** : référence visuelle = `G-DESIGN/STYLE.md` + les 4 planches ; les planches `01-veillee` et `02-carnet` sont des explorations écartées, à ne pas implémenter. À embarquer dans l'app : une police condensée libre (pas de requête réseau, CSP Devvit).
+
+**Changelog** : `PAGES.md` 4/4 validées ; `STYLE.md` marqué verrouillé.
