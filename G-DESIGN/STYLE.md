@@ -1,5 +1,7 @@
 # STYLE — Réseau électrique · direction « Maquette » (validée par Gaia le 2026-11-18)
 
+**VERROUILLÉ le 2026-11-18 (`/lock`)** : fin des explorations ; tout changement de style passe par un re-brief.
+
 Source : `planches/v1/03-maquette.html`. Toute planche suivante reprend ces règles ; une dérive est un défaut.
 
 ## Palette (un seul accent)
